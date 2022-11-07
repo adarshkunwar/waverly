@@ -1,0 +1,10 @@
+{
+  "name": "Create React App Sample",
+  "description": "an extension to interact with deso Block chain",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "open the popup"
+  }
+}
