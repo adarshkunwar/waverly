@@ -9,11 +9,14 @@
   font-family: consolas;
 }
 
+.rounded-button {
+  border-radius: 999px;
+}
+
 button {
   padding: 10px 30px;
   background: #efefef;
   border: none;
-  border-radius: 999px;
   color: #444;
   font-size: 1rem;
   font-weight: 700;

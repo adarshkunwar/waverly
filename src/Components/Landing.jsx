@@ -8,7 +8,7 @@ const Landing = () => {
           <div className="absolute top-36 left-36 text-3xl text-center">
             Welcome to Waverly 🌊
           </div>
-          <button className="absolute top-60 left-52 btn focus:outline-none">
+          <button className="absolute rounded-button top-60 left-52 btn focus:outline-none">
             Get started
           </button>
         </div>
