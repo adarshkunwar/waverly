@@ -1,19 +1,15 @@
 import React from "react";
-
+import img from "../img/waverly default.png";
 const Nav = (props) => {
   // chnage this accordingly. Make it props or wahtever you wish
   let loggedIn = false;
   //   this will change later on
 
   return (
-    <div className="absolute w-[40rem] bg-green-400 pt-1 pb-2 px-10 text-2xl">
+    <div className="absolute w-[40rem] -mt-8 px-8">
       <div className="flex justify-between">
-        <div>logo</div>
-        <div
-          className="bg-red-100 rounded-full px-5 py-2"
-
-        >
-          {loggedIn ? "Log out" : "log in"}
+        <div>
+          <img src={img} alt="" className="w-36 h-36" />
         </div>
       </div>
       {/* {activeTab} */}

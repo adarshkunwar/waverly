@@ -10,7 +10,7 @@ const Landing = () => {
             <br />
             Remedy that?
           </div>
-          <button className="mt-5 bg-red-400 py-2 px-10 rounded-xl hover:mt-3">
+          <button className="absolute top-64 left-64 px-5 py-2 btn">
             Click me
           </button>
         </div>
