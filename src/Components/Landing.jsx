@@ -2,20 +2,14 @@ import React from "react";
 
 const Landing = () => {
   return (
-    <div className="w-[40rem] h-[25rem] border-red-200 border">
-      <div className="w-full h-full flex justify-center items-center text-center">
+    <div className="w-[40rem] h-[25rem] border-red-200 border ">
+      <div className="w-full h-full flex justify-center items-center   text-center">
         <div>
-          <div className="text-3xl text-center">
-            It seems like you are not logged in.
-            <br />
-            Remedy that?
+          <div className="absolute top-36 left-36 text-3xl text-center">
+            Welcome to Waverly 🌊
           </div>
-          <button className="absolute top-64 left-64 px-5 py-2 btn">
-            <a href="#">
-              <span>
-                <button>click me</button>
-              </span>
-            </a>
+          <button className="absolute top-60 left-52 btn focus:outline-none">
+            Get started
           </button>
         </div>
       </div>
