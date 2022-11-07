@@ -6,7 +6,7 @@ import Nav from "./Components/Nav";
 
 function App() {
 
-  let logIn = false;
+  let logIn = true;
   return (
     <div>
       <Nav/>

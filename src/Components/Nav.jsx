@@ -2,6 +2,7 @@ import React from "react";
 import img from "../img/waverly default.png";
 const Nav = (props) => {
   // change this accordingly. Make it props or wahtever you wish
+  // eslint-disable-next-line
   let loggedIn = false;
   //   this will change later on
 
