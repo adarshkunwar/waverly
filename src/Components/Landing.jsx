@@ -11,7 +11,11 @@ const Landing = () => {
             Remedy that?
           </div>
           <button className="absolute top-64 left-64 px-5 py-2 btn">
-            Click me
+            <a href="#">
+              <span>
+                <button>click me</button>
+              </span>
+            </a>
           </button>
         </div>
       </div>
