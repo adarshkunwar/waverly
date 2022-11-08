@@ -27,7 +27,7 @@ const Landing = ({ logIn }) => {
           <div className="absolute top-40 left-14  text-3xl text-center welcomewaverly">
             <span id="welcometo">Welcome to </span>Waverly 🌊👋
           </div>
-          <button onClick={loginToDeso} className="absolute top-60 left-52 btn focus:outline-none getstarted">
+          <button onClick={loginToDeso} className="absolute top-60 left-52 btn focus:outline-none bigbtn">
             GET STARTED
           </button>
         </div>

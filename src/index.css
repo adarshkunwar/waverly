@@ -15,11 +15,12 @@
 }
 
 
-button {
+.bigbtn {
   font-family: 'PT Sans', sans-serif;
   padding: 10px 30px;
   background: #efefef;
   border: none;
+  border-radius: 20px;
   color: #444;
   font-size: 1rem;
   font-weight: 700;
@@ -34,14 +35,14 @@ button {
     6px 6px 10px rgba(0, 0, 0, .15);
 }
 
-button:hover {
+.bigbtn:hover {
   box-shadow: -2px -2px 6px rgba(255, 255, 255, .6),
     -2px -2px 4px rgba(255, 255, 255, .4),
     2px 2px 2px rgba(255, 255, 255, .05),
     2px 2px 4px rgba(0, 0, 0, .1);
 }
 
-button:active {
+.bigbtn:active {
   box-shadow: inset -2px -2px 6px rgba(255, 255, 255, .7),
     inset -2px -2px 4px rgba(255, 255, 255, .5),
     inset 2px 2px 2px rgba(255, 255, 255, .075),
@@ -63,4 +64,36 @@ button:active {
 
 .navbar {
  box-shadow: 0px 1px 0px rgba(0, 0, 0, .1);
+}
+
+.logout {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #efefef;
+  border-radius: 50%;
+  
+  outline: none;
+  cursor: pointer;
+  transition: .2s ease-in-out;
+  box-shadow: -6px -6px 14px rgba(255, 255, 255, .7),
+    -6px -6px 10px rgba(255, 255, 255, .5),
+    6px 6px 8px rgba(255, 255, 255, .075),
+    6px 6px 10px rgba(0, 0, 0, .15);
+}
+
+.logout:hover {
+  box-shadow: -2px -2px 6px rgba(255, 255, 255, .6),
+    -2px -2px 4px rgba(255, 255, 255, .4),
+    2px 2px 2px rgba(255, 255, 255, .05),
+    2px 2px 4px rgba(0, 0, 0, .1);
+}
+
+.logout:active {
+  box-shadow: inset -2px -2px 6px rgba(255, 255, 255, .7),
+    inset -2px -2px 4px rgba(255, 255, 255, .5),
+    inset 2px 2px 2px rgba(255, 255, 255, .075),
+    inset 2px 2px 4px rgba(0, 0, 0, .15);
 }
