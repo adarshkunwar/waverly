@@ -12,12 +12,11 @@ const Landing = ({ logIn }) => {
     const { key, user } = response;
     const res = {};
     res[key] = user;
-    console.log(res);
-    localStorage.setItem('lastLoggedInUser', JSON.stringify(key));
-    localStorage.setItem('identityUsers', JSON.stringify(res))
+    localStorage.setItem('deso_user', JSON.stringify(response.user));
+    localStorage.setItem('deso_user_key', JSON.stringify(response.key))
     localStorage.setItem('users', JSON.stringify(res))
-    localStorage.setItem('lastIdentityServiceURL', '"https://identity.deso.org"')
-    localStorage.setItem("IdentityUsersKey", JSON.stringify(res));
+    // localStorage.setItem('lastIdentityServiceURL', '"https://identity.deso.org"')
+    // localStorage.setItem("IdentityUsersKey", JSON.stringify(res));
     localStorage.setItem("isLoggedIn", "true");
     logIn(true);
   }

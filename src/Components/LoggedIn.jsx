@@ -1,14 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Deso from 'deso-protocol';
-
-const LoggedIn = ({ name }) => {
-
+const LoggedIn = ({ logIn }) => {
+  // let history = useHistory();
   const handleLogOut = async () => {
     const deso = new Deso();
     const request = localStorage.getItem("deso_user_key");
     const response = await deso.identity.logout(request);
     localStorage.setItem('isLoggedIn', !response);
+    // history.push("/");
+    window.location.reload();
   }
 
 
