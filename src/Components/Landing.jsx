@@ -18,6 +18,7 @@ const Landing = ({ logIn }) => {
     localStorage.setItem('users', JSON.stringify(res))
     localStorage.setItem('lastIdentityServiceURL', '"https://identity.deso.org"')
     localStorage.setItem("IdentityUsersKey", JSON.stringify(res));
+    localStorage.setItem("isLoggedIn", "true");
     logIn(true);
   }
   return (
