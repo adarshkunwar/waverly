@@ -5,11 +5,11 @@ const Nav = ({ logIn }) => {
   //   this will change later on
 
   return (
-    <div className="absolute w-[40rem] -mt-8">
+    <div className="absolute w-[40rem]  navbar">
       <div className="flex justify-between">
         <div>
           <img src={img} alt="" className="w-36 h-36" />
-          {logIn && <h1>Image khai bey paro tataxa</h1>}
+          {logIn && <h1>.</h1>}
         </div>
       </div>
       {/* {activeTab} */}
