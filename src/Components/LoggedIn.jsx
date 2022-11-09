@@ -10,13 +10,13 @@ const LoggedIn = ({ logIn }) => {
   if (activeTab === "mint") tab = <MintOperation />;
 
   return (
-    <div className="w-[40rem] h-[25rem] border-red-300 border scale relative">
+    <div className="w-[40rem] h-[25rem] border-red-300 border scale ">
       {/* top */}
       <div className="w-full grid grid-cols-2 gap-10 mt-20 px-5 rounded-lg">
         <button
           onClick={() => setActiveTab("post")}
           className={`bigbtn ${
-            activeTab === "post" ? "logout-active" : "bg-[#efefef]"
+            activeTab === "post" ? "logout-active bg-[#efefef]" : "bg-[#efefef]"
           }`}
         >
           Put a post
@@ -24,7 +24,7 @@ const LoggedIn = ({ logIn }) => {
         <button
           onClick={() => setActiveTab("mint")}
           className={`bigbtn ${
-            activeTab === "mint" ? "logout-active" : "bg-[#efefef]"
+            activeTab === "mint" ? "logout-active bg-[#efefef]" : "bg-[#efefef]"
           }`}
         >
           Mint an NFT
