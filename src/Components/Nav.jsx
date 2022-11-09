@@ -7,7 +7,7 @@ import {useNavigate} from 'react-router-dom'
 const Nav = ({ logIn }) => {
   // chnage this accordingly. Make it props or wahtever you wish
   //   this will change later on
-  const [profile, setProfile] = useState("");
+  const [profile, setProfile] = useState("https://i.pinimg.com/originals/f2/80/48/f280489498a65d247b8f2b6a0bb5cd76.jpg");
   const navigate = useNavigate();
   const handleLogOut = async () => {
     const deso = new Deso();
@@ -18,18 +18,16 @@ const Nav = ({ logIn }) => {
     navigate('/');
     window.location.reload();
   };
-  async function getFeaturedImage(){
+  async function getProfileImage(){
     const pub_key = localStorage.getItem("user_key")
-    console.log(pub_key);
     const deso = new Deso();
     const request = {
       "PublicKeyBase58Check": pub_key
     };
     const response = await deso.user.getSingleProfile(request);
-    console.log(response.Profile.ExtraData.NFTProfilePictureUrl);
     setProfile(response.Profile.ExtraData.NFTProfilePictureUrl);
   }
-  logIn && getFeaturedImage();
+  logIn && getProfileImage();
   return (
     <div className="absolute w-[40rem] navbar">
       <div className="flex justify-between ">
