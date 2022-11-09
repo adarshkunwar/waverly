@@ -1,47 +1,41 @@
-import React from "react";
+import React,{useState} from "react";
 import img from "../img/waverly default.png";
-import profile from "../img/profile.jpeg";
 import { CgLogOff } from "react-icons/cg";
 import { IconContext } from "react-icons";
-<<<<<<< HEAD
 import Deso from 'deso-protocol';
 import {useNavigate} from 'react-router-dom'
-=======
-import Deso from "deso-protocol";
->>>>>>> 6e30215675179806e254fd0f8057c2a07ce2281c
 const Nav = ({ logIn }) => {
   // chnage this accordingly. Make it props or wahtever you wish
   //   this will change later on
+  const [profile, setProfile] = useState("");
   const navigate = useNavigate();
   const handleLogOut = async () => {
     const deso = new Deso();
     const request = localStorage.getItem("deso_user_key");
     const response = await deso.identity.logout(request);
-<<<<<<< HEAD
     localStorage.setItem('isLoggedIn', !response);
+    localStorage.setItem('user_key', "");
     navigate('/');
-=======
-    localStorage.setItem("isLoggedIn", !response);
-    // history.push("/");
->>>>>>> 6e30215675179806e254fd0f8057c2a07ce2281c
     window.location.reload();
   };
-
+  async function getFeaturedImage(){
+    const pub_key = localStorage.getItem("user_key")
+    console.log(pub_key);
+    const deso = new Deso();
+    const request = {
+      "PublicKeyBase58Check": pub_key
+    };
+    const response = await deso.user.getSingleProfile(request);
+    console.log(response.Profile.ExtraData.NFTProfilePictureUrl);
+    setProfile(response.Profile.ExtraData.NFTProfilePictureUrl);
+  }
+  logIn && getFeaturedImage();
   return (
     <div className="absolute w-[40rem] navbar">
       <div className="flex justify-between ">
         <nav>
           <img src={img} alt="" className="w-36 h-30 mt-1" />
         </nav>
-<<<<<<< HEAD
-      
-      {logIn?<button onClick={handleLogOut} className="logout mr-5 mt-1.5 scale-90" >
-          <IconContext.Provider value={{color: "red", size: "27px"}}>
-          <CgLogOff style={{size: '200px'}}/>
-          </IconContext.Provider>
-        </button>:' '}
-    </div>
-=======
 
         {logIn ? (
           <div className="flex gap-3 items-center">
@@ -64,7 +58,6 @@ const Nav = ({ logIn }) => {
           " "
         )}
       </div>
->>>>>>> 6e30215675179806e254fd0f8057c2a07ce2281c
     </div>
   );
 };

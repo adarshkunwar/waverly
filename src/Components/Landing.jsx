@@ -4,7 +4,7 @@ import Deso from "deso-protocol";
 // first login garda they check on identity.deso.org
 
 const Landing = ({ logIn }) => {
-  
+
   const loginToDeso = async () => {
     try {
       const deso = new Deso();
@@ -15,6 +15,7 @@ const Landing = ({ logIn }) => {
       res[key] = user;
       localStorage.setItem('deso_user', JSON.stringify(response.user));
       localStorage.setItem('deso_user_key', JSON.stringify(response.key))
+      localStorage.setItem('user_key', response.key)
       localStorage.setItem('users', JSON.stringify(res))
       // localStorage.setItem('lastIdentityServiceURL', '"https://identity.deso.org"')
       // localStorage.setItem("IdentityUsersKey", JSON.stringify(res));
