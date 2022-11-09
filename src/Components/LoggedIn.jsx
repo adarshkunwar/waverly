@@ -22,22 +22,22 @@ const LoggedIn = ({ logIn }) => {
       <div className="w-full grid grid-cols-2 gap-10 mt-20 px-5 rounded-lg">
         <button className="bigbtn">Put a post</button>
         <button className="bigbtn">Mint an NFT</button>
-        <button className="logout" onClick={handleLogOut}>
+        {/* <button className="logout" onClick={handleLogOut}>
           <IconContext.Provider value={{color: "red", size: "27px"}}>
           <CgLogOff style={{size: '200px'}}/>
           </IconContext.Provider>
-        </button>
+        </button> */}
       </div>
     </div>
   );
 };
 
-LoggedIn.prototype = {
-  name: PropTypes.string,
-};
+// LoggedIn.prototype = {
+//   name: PropTypes.string,
+// };
 
-LoggedIn.defaultProps = {
-  name: "jello",
-};
+// LoggedIn.defaultProps = {
+//   name: "jello",
+// };
 
 export default LoggedIn;
