@@ -18,7 +18,7 @@
 .bigbtn {
   font-family: 'PT Sans', sans-serif;
   padding: 10px 30px;
-  background: #efefef;
+  /* background: #efefef; */
   border: none;
   border-radius: 20px;
   color: #444;

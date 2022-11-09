@@ -1,5 +1,6 @@
 import React from "react";
 import img from "../img/waverly default.png";
+import profile from "../img/profile.jpeg";
 import { CgLogOff } from 'react-icons/cg';
 import { IconContext } from "react-icons";
 import Deso from 'deso-protocol';
@@ -23,11 +24,14 @@ const Nav = ({ logIn }) => {
           <img src={img} alt="" className="w-36 h-30 mt-1" />
         </nav>
       
-      {logIn?(<button onClick={handleLogOut} className="logout mr-5 mt-1.5 scale-90" >
+      {logIn?(<div className="flex gap-3 items-center">
+            <div> <img src={profile} className="w-11 h-11 rounded-full "/></div>
+            <div> <button onClick={handleLogOut} className="logout mr-5  scale-90" >
           <IconContext.Provider value={{color: "red", size: "27px"}}>
           <CgLogOff style={{size: '200px'}}/>
           </IconContext.Provider>
-        </button>):' '}
+        </button></div>
+      </div>):' '}
     </div>
     </div>
   );
