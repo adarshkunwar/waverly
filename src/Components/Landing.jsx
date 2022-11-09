@@ -4,22 +4,27 @@ import Deso from "deso-protocol";
 // first login garda they check on identity.deso.org
 
 const Landing = ({ logIn }) => {
-  const loginToDeso = async (e) => {
-    e.preventDefault();
-    const deso = new Deso();
-    const request = 4;
-    const response = await deso.identity.login(request);
-    const { key, user } = response;
-    const res = {};
-    res[key] = user;
-    localStorage.setItem('deso_user', JSON.stringify(response.user));
-    localStorage.setItem('deso_user_key', JSON.stringify(response.key))
-    localStorage.setItem('users', JSON.stringify(res))
-    // localStorage.setItem('lastIdentityServiceURL', '"https://identity.deso.org"')
-    // localStorage.setItem("IdentityUsersKey", JSON.stringify(res));
-    localStorage.setItem("isLoggedIn", "true");
-    logIn(true);
+  
+  const loginToDeso = async () => {
+    try {
+      const deso = new Deso();
+      const request = 4;
+      const response = await deso.identity.login(request);
+      const { key, user } = response;
+      const res = {};
+      res[key] = user;
+      localStorage.setItem('deso_user', JSON.stringify(response.user));
+      localStorage.setItem('deso_user_key', JSON.stringify(response.key))
+      localStorage.setItem('users', JSON.stringify(res))
+      // localStorage.setItem('lastIdentityServiceURL', '"https://identity.deso.org"')
+      // localStorage.setItem("IdentityUsersKey", JSON.stringify(res));
+      localStorage.setItem("isLoggedIn", "true");
+      logIn(true);
+    }
+    catch (error) {
+      console.error(error);
   }
+}
   return (
     <div className="w-[40rem] h-[25rem] border-red-200 border ">
       <div className="w-full h-full flex justify-center items-center   text-center">
