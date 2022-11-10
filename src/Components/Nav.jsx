@@ -21,11 +21,9 @@ const Nav = ({ logIn }) => {
   async function getProfileImage(){
     const pub_key = localStorage.getItem("user_key")
     const deso = new Deso();
-    const request = {
-      "PublicKeyBase58Check": pub_key
-    };
-    const response = await deso.user.getSingleProfile(request);
-    setProfile(response.Profile.ExtraData.NFTProfilePictureUrl);
+    const request = pub_key;
+    const response = await deso.user.getSingleProfilePicture(request);
+    setProfile(response);
   }
   logIn && getProfileImage();
   return (
