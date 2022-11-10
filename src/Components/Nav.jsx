@@ -25,16 +25,19 @@ const Nav = ({ logIn }) => {
       "PublicKeyBase58Check": pub_key
     };
     const response1 = await deso.user.getSingleProfile(request1);
+    const request2 = pub_key;
+      const response2 = await deso.user.getSingleProfilePicture(request2);
     console.log(response1);
     if(response1.Profile.ExtraData!= null){
       if(response1.Profile.ExtraData.NFTProfilePictureUrl!=null){
         console.log("from get single profile");
         setProfile(response1.Profile.ExtraData.NFTProfilePictureUrl);
-      }}
+      }else{
+        console.log("from get single profile picture");
+        setProfile(response2);}
+    }
     else{
       console.log("from get single profile picture");
-      const request2 = pub_key;
-      const response2 = await deso.user.getSingleProfilePicture(request2);
       setProfile(response2);
     }
   }
