@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 
-const EmbeddBtn = (prop) => {
-  const [visibility, setVisibility] = useState(prop.visibility);
+const EmbeddBtn = ({ visibility, toggle }) => {
+  //   const [visibility, setVisibility] = useState(prop.visibility);
+  console.log(visibility);
   return (
-    <div className={`${visibility ? "block" : "hidden"}`}>
+    <div className={`${visibility === true ? "block" : "hidden"}`}>
       <input type="text" name="data" id="data" className="bg-red-500" />
-      <input type="submit" value="" onClick={() => setVisibility(false)} />
+      <input type="submit" value="ok" onClick={() => toggle(false)} />
     </div>
   );
 };
