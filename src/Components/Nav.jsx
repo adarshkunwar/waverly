@@ -21,9 +21,22 @@ const Nav = ({ logIn }) => {
   async function getProfileImage(){
     const pub_key = localStorage.getItem("user_key")
     const deso = new Deso();
-    const request = pub_key;
-    const response = await deso.user.getSingleProfilePicture(request);
-    setProfile(response);
+    const request1 = {
+      "PublicKeyBase58Check": pub_key
+    };
+    const response1 = await deso.user.getSingleProfile(request1);
+    console.log(response1);
+    if(response1.Profile.ExtraData!= null){
+      if(response1.Profile.ExtraData.NFTProfilePictureUrl!=null){
+        console.log("from get single profile");
+        setProfile(response1.Profile.ExtraData.NFTProfilePictureUrl);
+      }}
+    else{
+      console.log("from get single profile picture");
+      const request2 = pub_key;
+      const response2 = await deso.user.getSingleProfilePicture(request2);
+      setProfile(response2);
+    }
   }
   logIn && getProfileImage();
   return (
