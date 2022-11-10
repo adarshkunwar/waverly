@@ -33,11 +33,11 @@ const PostOperation = () => {
             </div>
             <div className="embedd">
               <div className={`${textBoxActive ? "mt-5" : "mt-0"}`}>
-                <EmbeddBtn visibility={textBoxActive} />
+                <EmbeddBtn visibility={textBoxActive} setVisibility={setTextBoxActive}/>
               </div>
               <button
                 className="logout mr-5  scale-75"
-                onClick={() => setTextBoxActive(true)}
+                onClick={() => setTextBoxActive(!textBoxActive)}
               >
                 <IconContext.Provider value={{ color: "red", size: "27px" }}>
                   <HiOutlineExternalLink style={{ size: "200px" }} />
@@ -52,7 +52,7 @@ const PostOperation = () => {
             <div className="areweave">
               <button
                 className="logout mr-5  scale-75"
-                onClick={() => setTextBoxActive(true)}
+                onClick={() => setTextBoxActive(!textBoxActive)}
               >
                 <IconContext.Provider value={{ color: "red", size: "27px" }}>
                   <ImEmbed style={{ size: "200px" }} />

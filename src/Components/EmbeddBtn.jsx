@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-const EmbeddBtn = (prop) => {
-  const [visibility, setVisibility] = useState(prop.visibility);
+const EmbeddBtn = ({visibility,setVisibility}) => {
   return (
     <div className={`${visibility ? "block" : "hidden"}`}>
       <input type="text" name="data" id="data" className="bg-red-500" />
