@@ -21,7 +21,7 @@ const Nav = ({ logIn }) => {
     <div className="absolute w-[40rem] navbar  ">
       <div className="flex justify-between ">
         <nav>
-          <img src={img} alt="" className="w-36 h-30 mt-1" />
+          <img src={img} alt="" className="w-36 h-30 mt-1 cursor-pointer" />
         </nav>
 
         {logIn ? (
