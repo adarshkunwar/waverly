@@ -9,39 +9,48 @@ const Nav = ({ logIn }) => {
   //   this will change later on
   const [profile, setProfile] = useState("https://upload.wikimedia.org/wikipedia/commons/b/b9/Youtube_loading_symbol_1_(wobbly).gif");
   const navigate = useNavigate();
+
   const handleLogOut = async () => {
-    const deso = new Deso();
-    const request = localStorage.getItem("deso_user_key");
-    const response = await deso.identity.logout(request);
-    localStorage.setItem('isLoggedIn', !response);
-    localStorage.setItem('user_key', "");
-    navigate('/');
-    window.location.reload();
-  };
-  async function getProfileImage(){
-    const pub_key = localStorage.getItem("user_key")
-    const deso = new Deso();
-    const request1 = {
-      "PublicKeyBase58Check": pub_key
-    };
-    const response1 = await deso.user.getSingleProfile(request1);
-    const request2 = pub_key;
-      const response2 = await deso.user.getSingleProfilePicture(request2);
-    console.log(response1);
-    if(response1.Profile.ExtraData!= null){
-      if(response1.Profile.ExtraData.NFTProfilePictureUrl!=null){
-        console.log("from get single profile");
-        setProfile(response1.Profile.ExtraData.NFTProfilePictureUrl);
-      }else{
-        console.log("from get single profile picture");
-        setProfile(response2);}
+    try {
+      const deso = new Deso();
+      const request = localStorage.getItem("deso_user_key");
+      const response = await deso.identity.logout(request);
+      localStorage.setItem('isLoggedIn', !response);
+      localStorage.setItem('user_key', "");
+      navigate('/');
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
     }
-    else{
-      console.log("from get single profile picture");
-      setProfile(response2);
+  };
+
+  async function getProfileImage(){
+    try {
+      const pub_key = localStorage.getItem("user_key")
+      const deso = new Deso();
+      const request1 = {
+        "PublicKeyBase58Check": pub_key
+      };
+      const response1 = await deso.user.getSingleProfile(request1);
+      const request2 = pub_key;
+        const response2 = await deso.user.getSingleProfilePicture(request2);
+      if(response1.Profile.ExtraData!= null){
+        if(response1.Profile.ExtraData.NFTProfilePictureUrl!=null){
+          setProfile(response1.Profile.ExtraData.NFTProfilePictureUrl);
+        }else{
+          setProfile(response2);}
+      }
+      else{
+        setProfile(response2);
+      }
+    } catch (error) {
+      console.error(error);
     }
   }
+
+
   logIn && getProfileImage();
+
   return (
     <div className="absolute w-[40rem] navbar">
       <div className="flex justify-between ">
