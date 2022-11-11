@@ -7,7 +7,7 @@ import {useNavigate} from 'react-router-dom'
 const Nav = ({ logIn }) => {
   // chnage this accordingly. Make it props or wahtever you wish
   //   this will change later on
-  const [profile, setProfile] = useState("https://i.pinimg.com/originals/f2/80/48/f280489498a65d247b8f2b6a0bb5cd76.jpg");
+  const [profile, setProfile] = useState("https://upload.wikimedia.org/wikipedia/commons/b/b9/Youtube_loading_symbol_1_(wobbly).gif");
   const navigate = useNavigate();
   const handleLogOut = async () => {
     const deso = new Deso();

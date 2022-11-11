@@ -1,21 +1,19 @@
 // comment from alex, embedded btn still have work to do. only the design is done
 
 import React, { useState } from "react";
-
+import PreviewPost from "./PreviewPost";
 import { BiImageAdd } from "react-icons/bi";
 import { IconContext } from "react-icons";
-import { HiOutlineExternalLink } from "react-icons/hi";
+// import { HiOutlineExternalLink } from "react-icons/hi";
 import { ImEmbed } from "react-icons/im";
 import EmbeddBtn from "./EmbeddBtn";
 
-const PostOperation = () => {
-  const [textBoxActive1, setTextBoxActive1] = useState(false);
-  const [textBoxActive2, setTextBoxActive2] = useState(false);
+const PostOperation = ({preview, setPreview}) => {
 
-  const revert = () => {
-    setTextBoxActive1(false);
-    setTextBoxActive2(false);
-  };
+  const [textBoxActive2, setTextBoxActive2] = useState(false);
+  if (preview === true) {
+    return <PreviewPost/>
+  }
   return (
     <div>
       <div>
@@ -40,7 +38,7 @@ const PostOperation = () => {
             </div>
             {/* img upload btn ends here */}
             {/* embedd btn starts here */}
-            <div className="embedd">
+            {/* <div className="embedd">
               <div>
                 <EmbeddBtn
                   visibility={textBoxActive1}
@@ -55,8 +53,8 @@ const PostOperation = () => {
                   <HiOutlineExternalLink style={{ size: "200px" }} />
                 </IconContext.Provider>
               </button>
-            </div>
-            {/* embedd brn ends here */}
+            </div> */}
+            {/* embedd btn ends here */}
             {/* use upload image api to generate link for uploaded image */}
             {/* https://images.deso.org/32df342003addbc897b431522b16eff800b6313b85f9ebac91c3f5ae88da8f76.webp */}
             {/* while submiting post use the url */}
@@ -65,11 +63,10 @@ const PostOperation = () => {
             <div className="areweave">
               <EmbeddBtn
                 visibility={textBoxActive2}
-                toggle={setTextBoxActive2}
               />
               <button
                 className="logout mr-5  scale-75"
-                onClick={() => setTextBoxActive2(true)}
+                onClick={() => setTextBoxActive2(!textBoxActive2)}
               >
                 <IconContext.Provider value={{ color: "red", size: "27px" }}>
                   <ImEmbed style={{ size: "200px" }} />
@@ -79,8 +76,7 @@ const PostOperation = () => {
           </div>
           {/* right buttons start here */}
           <div className="right-button">
-            <button
-              onClick={revert}
+            <button onClick={()=> setPreview(true)} 
               className=" btn focus:outline-none bg-[#efefef] bigbtn"
             >
               PREVIEW
