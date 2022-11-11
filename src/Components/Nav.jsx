@@ -55,7 +55,7 @@ const Nav = ({ logIn }) => {
     <div className="absolute w-[40rem] navbar">
       <div className="flex justify-between ">
         <nav>
-          <img src={img} alt="" className="w-36 h-30 mt-1 cursor-pointer" />
+          <img src={img} alt="" className="select-none w-36 h-30 mt-1 cursor-pointer" />
         </nav>
 
         {logIn ? (
@@ -63,7 +63,7 @@ const Nav = ({ logIn }) => {
             <div>
               <img
                 src={profile}
-                className="w-11 h-11 rounded-full "
+                className="select-none w-11 h-11 rounded-full "
                 alt="prof img"
               />
             </div>

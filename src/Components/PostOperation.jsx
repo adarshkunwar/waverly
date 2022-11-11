@@ -3,14 +3,15 @@
 import React, { useState } from "react";
 import PreviewPost from "./PreviewPost";
 import Deso from 'deso-protocol';
-import { BiImageAdd } from "react-icons/bi";
+
+import {RiImageAddFill} from "react-icons/ri"
 import { IconContext } from "react-icons";
 // import { HiOutlineExternalLink } from "react-icons/hi";
 import { ImEmbed } from "react-icons/im";
 import EmbeddBtn from "./EmbeddBtn";
 
 const PostOperation = ({preview, setPreview}) => {
-  const [imgAddColor  , setImgAddColor  ] = useState("red");
+  const [imgAddColor  , setImgAddColor  ] = useState("#444");
   const imgURLs = [];
   const [bodyText, setBodyText] = useState("");
   const [textBoxActive2, setTextBoxActive2] = useState(false);
@@ -45,21 +46,25 @@ const PostOperation = ({preview, setPreview}) => {
         {/* text area */}
         <textarea
           id="textbox"
-          className="textbox border-2 resize-none bg-slate-300 w-[37rem] mt-3 px-5 mx-5 focus:outline-none"
-          rows="7"
+          className="rounded-xl textbox border-2 resize-none text-lg pt-2 bg-[#efefef] w-[37rem] mt-4 px-5 mx-5 focus:outline-none"
+          rows={`${textBoxActive2?'5':'6'}`}
           cols="50"
+          placeholder="Enter your post"
           value={bodyText}
           onChange={(e)=>setBodyText(e.target.value)}
         ></textarea>
+        <EmbeddBtn
+                visibility={textBoxActive2}
+              />
         {/* btn start here */}
-        <div className="buttons mt-2 flex justify-between">
+        <div className="buttons mt-2 px-5 flex justify-between">
           {/* left buttons start here */}
-          <div className="left-buttons flex">
+          <div className="left-buttons -space-x-5 flex">
             {/* img upload btn start here */}
             <div className="img-upload">
-              <button className="logout mr-5  scale-75">
+              <button className="logout mr-5  scale-75" onClick={handleUploadImage}>
                 <IconContext.Provider value={{ color: `${imgAddColor}`, size: "27px" }}>
-                  <BiImageAdd style={{ size: "200px" }} onClick={handleUploadImage}/>
+                  <RiImageAddFill style={{ size: "200px" }} />
                 </IconContext.Provider>
               </button>
             </div>
@@ -88,14 +93,12 @@ const PostOperation = ({preview, setPreview}) => {
             {/* areweave image acts as the imgae url directly no upload image requred */}
             {/* image urls has string array */}
             <div className="areweave">
-              <EmbeddBtn
-                visibility={textBoxActive2}
-              />
+              
               <button
                 className="logout mr-5  scale-75"
                 onClick={() => setTextBoxActive2(!textBoxActive2)}
               >
-                <IconContext.Provider value={{ color: "red", size: "27px" }}>
+                <IconContext.Provider value={{ color: "#444", size: "27px" }}>
                   <ImEmbed style={{ size: "200px" }} />
                 </IconContext.Provider>
               </button>
@@ -104,7 +107,7 @@ const PostOperation = ({preview, setPreview}) => {
           {/* right buttons start here */}
           <div className="right-button">
             <button onClick={()=> setPreview(true)} 
-              className=" btn focus:outline-none bg-[#efefef] bigbtn"
+              className="select-none btn focus:outline-none bg-[#efefef] bigbtn"
             >
               PREVIEW
             </button>

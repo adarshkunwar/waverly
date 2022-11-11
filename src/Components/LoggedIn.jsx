@@ -15,7 +15,7 @@ const LoggedIn = ({ logIn }) => {
       <div className="w-full grid grid-cols-2 gap-10 mt-20 px-5 rounded-lg">
         <button
           onClick={() => setActiveTab("post")}
-          className={`bigbtn ${
+          className={`bigbtn select-none ${
             activeTab === "post" ? "logout-active bg-[#efefef]" : "bg-[#efefef]"
           }`}
         >
@@ -23,7 +23,7 @@ const LoggedIn = ({ logIn }) => {
         </button>
         <button
           onClick={() => setActiveTab("mint")}
-          className={`bigbtn ${
+          className={`bigbtn select-none ${
             activeTab === "mint" ? "logout-active bg-[#efefef]" : "bg-[#efefef]"
           }`}
         >
