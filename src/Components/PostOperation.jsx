@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import PreviewPost from "./PreviewPost";
+import SubmitPost from "./SubmitPost";
 import Deso from 'deso-protocol';
 
 import {RiImageAddFill} from "react-icons/ri"
@@ -9,16 +9,17 @@ import { IconContext } from "react-icons";
 import { ImEmbed } from "react-icons/im";
 import EmbeddBtn from "./EmbeddBtn";
 
-const PostOperation = ({preview, setPreview}) => {
+const PostOperation = ({submit, setSubmit}) => {
   const [imgAddColor  , setImgAddColor  ] = useState("#444");
   const [imgURLs, setImgURLs] = useState([]);
   const [bodyText, setBodyText] = useState("");
   const [textBoxActive2, setTextBoxActive2] = useState(false);
-  if (preview === true) {
-    return <PreviewPost text = {bodyText} imgs = {imgURLs} tooglePreview={setPreview}/>
+  if (submit === true) {
+    return <SubmitPost text = {bodyText} imgs = {imgURLs} toggleSubmit={setSubmit}/>
   }
 
   const handleUploadImage = async()=>{
+    console.log("Handle upload img is called")
     try {
       const pub_key = localStorage.getItem("user_key")
       const deso = new Deso();
@@ -44,15 +45,20 @@ const PostOperation = ({preview, setPreview}) => {
     <div>
       <div>
         {/* text area */}
-        <textarea
+      <div className="flex">
+      <textarea
           id="textbox"
-          className="rounded-xl textbox border-2 resize-none text-lg pt-2 bg-[#efefef] w-[37rem] mt-4 px-5 mx-5 focus:outline-none"
+          className="rounded-xl textbox border-2 resize-none text-lg pt-2 bg-[#efefef] w-[25rem] mt-4 px-5 mx-5 focus:outline-none"
           rows={`${textBoxActive2?'5':'6'}`}
-          cols="50"
+          cols="1"
           placeholder="Enter your post"
           value={bodyText}
           onChange={(e)=>setBodyText(e.target.value)}
         ></textarea>
+        <div className="border-2 mt-7 mb-3 w-[11rem] rounded-lg">
+        {/* Add Image Here & Add object-contain in className*/}
+        </div>
+      </div>
         <EmbeddBtn
                 visibility={textBoxActive2}
               />
@@ -106,10 +112,10 @@ const PostOperation = ({preview, setPreview}) => {
           </div>
           {/* right buttons start here */}
           <div className="right-button">
-            <button onClick={()=> setPreview(true)} 
+            <button onClick={()=> setSubmit(true)} 
               className="select-none btn focus:outline-none bg-[#efefef] bigbtn"
             >
-              PREVIEW
+              SUBMIT
             </button>
           </div>
         </div>

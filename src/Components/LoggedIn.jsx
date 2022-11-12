@@ -3,15 +3,15 @@ import PostOperation from "./PostOperation";
 import MintOperation from "./MintOperation";
 const LoggedIn = ({ logIn }) => {
   // let history = useHistory();
-  const [preview, setPreview] = useState(false)
+  const [submit, setSubmit] = useState(false)
   const [activeTab, setActiveTab] = useState("post");
   let tab;
-  if (activeTab === "post") tab = <PostOperation preview={preview} setPreview={setPreview}/>;
+  if (activeTab === "post") tab = <PostOperation submit={submit} setSubmit={setSubmit}/>;
   if (activeTab === "mint") tab = <MintOperation />;
 
   return (
     <div className="w-[40rem] h-[25rem] border-red-300 border scale ">
-      {/* top */} {!preview && 
+      {/* top */} {!submit && 
       <div className="w-full grid grid-cols-2 gap-10 mt-20 px-5 rounded-lg">
         <button
           onClick={() => setActiveTab("post")}
@@ -19,7 +19,7 @@ const LoggedIn = ({ logIn }) => {
             activeTab === "post" ? "logout-active bg-[#efefef]" : "bg-[#efefef]"
           }`}
         >
-          Put a post
+          POST
         </button>
         <button
           onClick={() => setActiveTab("mint")}
@@ -27,7 +27,7 @@ const LoggedIn = ({ logIn }) => {
             activeTab === "mint" ? "logout-active bg-[#efefef]" : "bg-[#efefef]"
           }`}
         >
-          Mint an NFT
+          MINT
         </button>
       </div> }
       {tab}
