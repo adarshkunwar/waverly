@@ -12,28 +12,29 @@ import EmbeddBtn from "./EmbeddBtn";
 
 const PostOperation = ({preview, setPreview}) => {
   const [imgAddColor  , setImgAddColor  ] = useState("#444");
-  const imgURLs = [];
+  const [imgURLs, setImgURLs] = useState([]);
   const [bodyText, setBodyText] = useState("");
   const [textBoxActive2, setTextBoxActive2] = useState(false);
   if (preview === true) {
-    return <PreviewPost/>
+    return <PreviewPost text = {bodyText} imgs = {imgURLs} tooglePreview={setPreview}/>
   }
 
   const handleUploadImage = async()=>{
     try {
-      console.log("upload image clicked");
-      console.log(bodyText);
       const pub_key = localStorage.getItem("user_key")
       const deso = new Deso();
       const request = {
         "UserPublicKeyBase58Check": pub_key
       };
       const response = await deso.media.uploadImage(request);
-      imgURLs.push(response.ImageURL);
+      console.log(response);
+      setImgURLs([...imgURLs,{id:imgURLs.length,name:response.ImageURL}]);
+      // const myImg = JSON.stringify(imgURLs);
+      // console.log(typeof(myImg));
+      // console.log(`to stirng is ${myImg}`)
       setImgAddColor("green");
-      console.log(imgURLs);
-      console.log(typeof(imgURLs));
-      console.log(bodyText);
+      // console.log(imgURLs);
+      // console.log(typeof(imgURLs))
     } catch (error) {
       console.error(error);
     }
