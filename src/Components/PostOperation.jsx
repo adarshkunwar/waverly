@@ -1,4 +1,3 @@
-// comment from alex, embedded btn still have work to do. only the design is done
 
 import React, { useState } from "react";
 import PreviewPost from "./PreviewPost";
