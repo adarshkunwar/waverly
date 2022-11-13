@@ -4,7 +4,7 @@ import { IoArrowBackCircleOutline } from "react-icons/io5";
 import './Submit.css';
 import {FaLink} from "react-icons/fa";
 
-export default function SubmitPost({ text, imgs, toggleSubmit }) {
+export default function SubmitPost({ response, toggleSubmit }) {
   // const imgURLar = imgs.map((img)=>{return img.name})
   // var imgURLar = imgs.map(function (item) {
   //   return item["name"];
@@ -33,6 +33,28 @@ export default function SubmitPost({ text, imgs, toggleSubmit }) {
   //     const response = await deso.posts.submitPost(request);
   //     console.log(response);
   //     window.location.reload();
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
+  // const handleSubmitPost = async () => {
+  //   try {
+  //     const pub_key = localStorage.getItem("user_key");
+  //     const deso = new Deso();
+  //     const imgURLar = [imgURLs[0].name]
+  //     console.log(imgURLar);
+      // const request = {
+      //   UpdaterPublicKeyBase58Check: pub_key,
+      //   BodyObj: {
+      //     Body: bodyText,
+      //     VideoURLs: [],
+      //     ImageURLs: imgURLar,
+      //   },
+      // };
+      // const response = await deso.posts.submitPost(request);
+      // console.log(response);
+      // window.location.reload();
   //   } catch (error) {
   //     console.error(error);
   //   }
@@ -80,12 +102,13 @@ export default function SubmitPost({ text, imgs, toggleSubmit }) {
           </div>
         </div> */}
         {/* <button onClick={()=>toogleSubmit(false)} className="absolute top-60 left-52 btn focus:outline-none bg-[#efefef] bigbtn"> */}
-        <button
+        <a href={`https://diamondapp.com/posts/${response.submittedTransactionResponse.PostEntryResponse.PostHashHex}`} target="_blank" rel="noreferrer"><button
           // onClick={handleSubmitPost}
           className={` absolute flex items-center gap-2 top-[16rem] left-[13.2rem] btn focus:outline-none bg-[#efefef] bigbtn ${checkBoxActive?"block":"hidden"}`}
         >
           <span className=" text-blue-500 flex gap-2 items-center mt-1"><span className="-mt-0.5"><FaLink/></span><span className="diamondfont">VIEW POST</span></span>
         </button>
+        </a>
       </div>
     </div>
   );

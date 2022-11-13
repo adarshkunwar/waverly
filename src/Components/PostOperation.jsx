@@ -10,16 +10,16 @@ import { ImEmbed } from "react-icons/im";
 import EmbeddBtn from "./EmbeddBtn";
 
 const PostOperation = ({submit, setSubmit}) => {
-  const [imgAddColor  , setImgAddColor  ] = useState("#444");
   const [imgURLs, setImgURLs] = useState([]);
   const [bodyText, setBodyText] = useState("");
   const [textBoxActive2, setTextBoxActive2] = useState(false);
+  const [divImg, setDivImg] = useState("");
+  const [submitResponse, setSubmitResponse] = useState();
   if (submit === true) {
-    return <SubmitPost text = {bodyText} imgs = {imgURLs} toggleSubmit={setSubmit}/>
+    return <SubmitPost response = {submitResponse} toggleSubmit={setSubmit}/>
   }
 
   const handleUploadImage = async()=>{
-    console.log("Handle upload img is called")
     try {
       const pub_key = localStorage.getItem("user_key")
       const deso = new Deso();
@@ -27,19 +27,45 @@ const PostOperation = ({submit, setSubmit}) => {
         "UserPublicKeyBase58Check": pub_key
       };
       const response = await deso.media.uploadImage(request);
-      console.log(response);
       setImgURLs([...imgURLs,{id:imgURLs.length,name:response.ImageURL}]);
-      // const myImg = JSON.stringify(imgURLs);
-      // console.log(typeof(myImg));
-      // console.log(`to stirng is ${myImg}`)
-      setImgAddColor("green");
-      // console.log(imgURLs);
-      // console.log(typeof(imgURLs))
+      setDivImg(response.ImageURL.toString());
     } catch (error) {
       console.error(error);
     }
   }
-  
+  const handleSubmitPost = async () => {
+    try {
+      const pub_key = localStorage.getItem("user_key");
+      const deso = new Deso();
+      let imgURLar = [];
+      if(Object.keys(imgURLs).length !== 0){
+        imgURLar = [imgURLs[imgURLs.length-1].name];
+      }
+      const request = {
+        UpdaterPublicKeyBase58Check: pub_key,
+        BodyObj: {
+          Body: bodyText,
+          VideoURLs: [],
+          ImageURLs: imgURLar,
+        },
+      };
+      if(bodyText.length!==0 || Object.keys(imgURLs).length !== 0)
+      {
+        const response = await deso.posts.submitPost(request);
+        console.log(response);
+        setSubmitResponse(response)
+        setBodyText("");
+        setImgURLs([]);
+        setDivImg("");
+        setSubmit(true);
+      }
+      else{
+        console.log("One should be present!")
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div>
@@ -56,7 +82,10 @@ const PostOperation = ({submit, setSubmit}) => {
           onChange={(e)=>setBodyText(e.target.value)}
         ></textarea>
         <div className="border-2 mt-7 mb-3 w-[11rem] rounded-lg">
-        {/* Add Image Here & Add object-contain in className*/}
+        <img src={
+          divImg
+        } alt=""/>
+        {/* <img src={""} alt=""/> */}
         </div>
       </div>
         <EmbeddBtn
@@ -69,7 +98,7 @@ const PostOperation = ({submit, setSubmit}) => {
             {/* img upload btn start here */}
             <div className="img-upload">
               <button className="logout mr-5  scale-75" onClick={handleUploadImage}>
-                <IconContext.Provider value={{ color: `${imgAddColor}`, size: "27px" }}>
+                <IconContext.Provider value={{ color: "#444", size: "27px" }}>
                   <RiImageAddFill style={{ size: "200px" }} />
                 </IconContext.Provider>
               </button>
@@ -112,7 +141,7 @@ const PostOperation = ({submit, setSubmit}) => {
           </div>
           {/* right buttons start here */}
           <div className="right-button">
-            <button onClick={()=> setSubmit(true)} 
+            <button onClick={handleSubmitPost} 
               className="select-none btn focus:outline-none bg-[#efefef] bigbtn"
             >
               SUBMIT
