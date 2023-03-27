@@ -6,15 +6,17 @@ Project Description
 
 ### Todo
 
-- [ ]   
 - [ ] hero  
-- [ ] topbar  
-- [ ] sidebar  
-- [ ] topbar  
+- [ ] plan ahead  
+- [ ] gallery  
+- [ ] about  
+- [ ] parallex  
 
 ### In Progress
 
+- [ ] sidebar  
 
 ### Done ✓
 
+- [x] topbar  
 
